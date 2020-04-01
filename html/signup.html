@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sign Up</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href='../css/signup.css'>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Register Page</h1>
+
+    <form action='../php/signup.php' method='post'>
+        <div class="form-group">
+          <label for="exampleInputEmail1">First Name</label>
+          <input name="fname" class="form-control" placeholder="Enter First Name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Last Name</label>
+            <input name="lname" class="form-control" placeholder="Enter Last Name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Eagle ID</label>
+            <input name="username" class="form-control" placeholder="Enter Eagle ID" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Phone Number</label>
+            <input name="phone_num" class="form-control" placeholder="Enter 10 Digit Phone #" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Gender</label>
+            <input name="gender" required class="form-control" placeholder="Enter Gender">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+          <small id="emailHelp" class="form-text text-muted">Make sure to use your georgiasouthern.edu email address or login will not work.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" name="pword" required class="form-control" id="exampleInputPassword1" placeholder="EnterPassword">
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+      <div class="sign">
+        <form action="./login.html">
+            <input class="btn btn-primary" type="submit" value="Log in" />
+        </form>
+        <small>already a user? Log in!</small>
+      </div>
+      
+
+</body>
+
+</html>

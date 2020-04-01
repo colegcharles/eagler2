@@ -2,9 +2,35 @@
 $email = $_POST["email"];
 $password = $_POST["pword"];
 
-if ($email != 'cole@cole.com' or $password != 'cole') {
+include './db.php';
+include './info.php';
+
+// connect to the db
+$connection = createConnection($server, $uname, $pass, $dbname);
+
+// Check connection
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+}
+
+$data = $connection->query("select * from user");
+
+$signin = false;
+if ($data->num_rows > 0) {
+    // output data of each row
+    while($row = $data->fetch_assoc()) {
+        if ($email == $row["email"] and $password == $row["password"]) {
+            $signin = true;
+        }
+    }
+} else {
+    echo "0 results";
+}
+
+
+if (!$signin) {
     header( "Location: http://localhost/eagler/html/login.html?timestamp=7" );
-    echo "fuck";
+    echo '<h1>wrong username / password</h1>';
     exit;
 }
 ?>
@@ -25,6 +51,7 @@ if ($email != 'cole@cole.com' or $password != 'cole') {
 
 <body>
 <h1>success you logged in !!!!</h1>
+<p>amr start working on this page</p>
 </body>
 
 </html>

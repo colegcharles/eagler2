@@ -50,6 +50,4 @@ echo '<h1>after sign up</h1>';
 // close the db
 closeDb($connection);
 
-
-
 ?>

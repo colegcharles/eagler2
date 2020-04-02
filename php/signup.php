@@ -52,16 +52,34 @@ if ($connection->query($sql) === TRUE) {
 }
 
 // send users the link to the quiz php file
-$msg = "Thank you for registering for Eagler! please go to the following url to finish registering and begin swiping! \n 
-http://localhost/eagler/php/quiz.php?email=" . $email . "&timestamp=7";
-// use wordwrap() if lines are longer than 70 characters
-$msg = wordwrap($msg,70);
-// send email
-mail($email,"verify email",$msg);
-echo '<p>email sent</p>';
+// $msg = "Thank you for registering for Eagler! please go to the following url to finish registering and begin swiping! \n 
+// http://localhost/eagler/php/quiz.php?email=" . $email . "&timestamp=7";
+// // use wordwrap() if lines are longer than 70 characters
+// $msg = wordwrap($msg,70);
+// // send email
+// mail($email,"verify email",$msg);
+// echo '<p>email sent</p>';
 
-// close the db
-closeDb($connection);
+// // close the db
+// closeDb($connection);
+
+require_once('../PHPMailer/PHPMailerAutoload.php');
+$url = 'http://localhost/eagler/testemail.php';
+$data = array('to' => $email, 'from' => 'no-reply@eagler.com', 'subject' => 'Eagler Registration', 'message' => 'hello');
+
+// use key 'http' even if you send the request to https://...
+$options = array(
+    'http' => array(
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data)
+    )
+);
+$context  = stream_context_create($options);
+$result = file_get_contents($url, false, $context);
+if ($result === FALSE) { /* Handle error */ }
+
+var_dump($result);
 
 ?>
 
